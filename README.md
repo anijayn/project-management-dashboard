@@ -1,36 +1,111 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Property Management Dashboard
+
+A modern web application for managing property listings built with Next.js.
+
+## Features
+
+- **User Authentication**: Secure login and session management with NextAuth.js
+- **Property Management**: Create, read, update, and delete property listings
+- **Interactive Data Grid**: Advanced data grid with sorting, filtering, and pagination
+- **Responsive Design**: Mobile-friendly interface that works across devices
+- **Modern UI**: Clean, intuitive interface built with Shadcn UI components
+- **Custom Hooks**: Reusable logic for property and form management
+
+## Tech Stack
+
+- **Frontend**: Next.js, React, TypeScript, Tailwind CSS
+- **UI Components**: Shadcn UI, AG Grid, Lucide Icons
+- **Backend**: Next.js API Routes, Prisma ORM
+- **Database**: SQLite
+- **Authentication**: NextAuth.js
+- **Form Handling**: React Hook Form, Zod validation
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js 18+
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd property-management-dashboard
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Set up environment variables:
+   Create a `.env.local` file in the root directory with the following variables:
+   ```
+   NEXTAUTH_SECRET="your-secret-key"
+   NEXTAUTH_URL="http://localhost:3000"
+   ```
+
+4. Initialize the database:
+   ```bash
+   npx prisma migrate dev --name init
+   ```
+
+5. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+6. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Seeding Data
+
+To seed the database with sample properties:
+
+1. Log in to the application
+2. Make a GET request to `/api/properties/seed` endpoint
+3. This will create 200 sample properties for testing
+
+## Project Structure
+
+```
+/src
+  /app                   # Next.js App Router
+    /api                 # API routes
+      /auth              # Authentication endpoints
+      /properties        # Properties CRUD endpoints
+    /dashboard           # Dashboard page and components
+    /login               # Login page
+    /register            # Register page
+  /components            # Shared UI components
+    /ui                  # Shadcn UI components
+  /hooks                 # Custom React hooks
+    useProperties.ts      # Property management hook
+    usePropertyForm.ts     # Property form management hook
+  /lib                   # Utility functions and types
+  /prisma                # Prisma schema and migrations
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features in Detail
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Authentication
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Email/password authentication with NextAuth.js CredentialsProvider
+- Protected routes with Middleware
+- Session management with NextAuth.js
 
-## Learn More
+### Property Management
 
-To learn more about Next.js, take a look at the following resources:
+- Property listing with advanced filtering and sorting using ag-grid
+- Add/edit property form with validation
+- Bulk data seeding for testing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Data Grid
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Sortable and filterable columns
+- Pagination
+- Action buttons for each row
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License - see the LICENSE file for details.
