@@ -30,7 +30,7 @@ A modern web application for managing property listings built with Next.js.
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/anijayn/project-management-dashboard.git
    cd property-management-dashboard
    ```
 
@@ -48,6 +48,7 @@ A modern web application for managing property listings built with Next.js.
 
 4. Initialize the database:
    ```bash
+   cd src
    npx prisma migrate dev --name init
    ```
 
